@@ -42,7 +42,8 @@ annotate TravelService.Travel with @UI : {
     { Value : BookingFee             },
     { Value : TotalPrice             },
     { Value : Description            },
-    { Value : TravelStatus_code      }
+    { Value : TravelStatus_code      },
+    { Value : QuarantineEnd          }
   ],
   Facets : [{
     $Type  : 'UI.CollectionFacet',
@@ -68,7 +69,8 @@ annotate TravelService.Travel with @UI : {
     { Value : BookingFee             },
     { Value : TotalPrice             },
     { Value : Description            },
-    { Value : TravelStatus_code, Label : '{i18n>Status}' }  // label only necessary if differs from title of element
+    { Value : TravelStatus_code, Label : '{i18n>Status}' }, // label only necessary if differs from title of element
+    { Value : QuarantineEnd          }
   ]},
 };
 

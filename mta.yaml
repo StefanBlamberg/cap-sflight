@@ -21,7 +21,6 @@ modules:
     path: gen/srv
     requires:
       - name: sflight-db
-      - name: sflight-uaa
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter, destinations)
         properties:
@@ -38,7 +37,6 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: sflight-db
-      - name: sflight-uaa
     build-parameters:
       ignore: ["node_modules/"]
 
@@ -80,10 +78,6 @@ modules:
     build-parameters:
       no-source: true
     requires:
-      - name: sflight-uaa
-        parameters:
-          service-key:
-            name: sflight-uaa-key
       - name: sflight-html5-repo-host
         parameters:
           service-key:
@@ -100,11 +94,6 @@ modules:
               ServiceInstanceName: sflight-html5-repo-host
               ServiceKeyName: sflight-html5-repo-host-key
               sap.cloud.service: sap.fe.cap.sflight
-            - Name: sflight-uaa
-              Authentication: OAuth2UserTokenExchange
-              ServiceInstanceName: sflight-uaa
-              ServiceKeyName: sflight-uaa-key
-              sap.cloud.service: sap.fe.cap.sflight
 
 resources:
   # ------------------------------------------------------------
@@ -116,25 +105,6 @@ resources:
       service-plan: hdi-shared
     properties:
       hdi-service-name: ${service-name}
-
-  # ------------------------------------------------------------
-  - name: sflight-uaa
-  # ------------------------------------------------------------
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: xsuaa
-      service-plan: application
-      config:
-        xsappname: sflight
-        tenant-mode: dedicated
-        scopes:
-          - name: uaa.user
-            description: UAA
-        role-templates:
-          - name: Token_Exchange
-            description: UAA
-            scope-references:
-              - uaa.user
 
   # ------------------------------------------------------------
   - name: sflight-html5-repo-runtime

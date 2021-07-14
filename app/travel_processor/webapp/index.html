@@ -48,6 +48,8 @@
     <script>
       sap.ui.getCore().attachInit(function () {
         sap.ushell.Container.createRenderer().placeAt("content");
+        var oRenderer = sap.ushell.Container.getRenderer("fiori2");
+        oRenderer.setHeaderVisibility(false, false, ["home", "app"]);
       });
 
       sap.ui

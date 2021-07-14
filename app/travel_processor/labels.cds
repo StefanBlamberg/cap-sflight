@@ -13,6 +13,7 @@ annotate schema.Travel with @title: '{i18n>Travel}' {
   BookingFee   @title: '{i18n>BookingFee}'    @Measures.ISOCurrency: CurrencyCode_code;
   TotalPrice   @title: '{i18n>TotalPrice}'    @Measures.ISOCurrency: CurrencyCode_code;
   TravelStatus @title: '{i18n>TravelStatus}'  @Common.Text: TravelStatus.name     @Common.TextArrangement: #TextOnly;
+  QuarantineEnd @title: 'End of Quarantine';
   to_Customer  @title: '{i18n>CustomerID}'    @Common.Text: to_Customer.LastName  @Common.TextArrangement: #TextFirst;
   to_Agency    @title: '{i18n>AgencyID}'      @Common.Text: to_Agency.Name        @Common.TextArrangement: #TextFirst;
 }
